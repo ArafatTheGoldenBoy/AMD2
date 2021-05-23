@@ -23,6 +23,16 @@ if(isset($_POST['add_meeting']))
         exit();
     }
 }
+if(isset($_POST['delete_meeting']))
+{	 
+    $meeting_id = $_POST['delete_meeting'];
+    $sql = "select remove_meeting('$meeting_id')";
+    $result = pg_query($db, $sql);
+    if ($result) {
+        header("Location: Remove_Meeting.php");
+        exit();
+    }
+}
 ?>
 
 <!-- <script type="text/javascript">

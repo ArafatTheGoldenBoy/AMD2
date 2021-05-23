@@ -7,17 +7,20 @@
 </head>
 <body>
 <?php include "inc/nav.php"; ?>
+<form action="select_meeting.php" method="post">
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">place</th>
-      <th scope="col">No of student</th>
+      <th scope="col">Name</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Password</th>
+      <th scope="col">Created time</th>
     </tr>
   </thead>
   <tbody>
   <?php 
-  $show_student = pg_query($db, "select * from get_meeting_overview()");
+  $show_student = pg_query($db, "select * from students");
 if (!$show_student) {
     echo "An error occurred.\n";
     exit;
@@ -27,11 +30,14 @@ if (!$show_student) {
     echo "<tr>";
         echo  "<td> $row[0] </td>";
         echo  "<td> $row[1] </td>";
-        echo  "<td> $row[6] </td>";
+        echo  "<td> $row[2] </td>";
+        echo  "<td> $row[3] </td>";
+        echo  "<td> $row[4] </td>";
+        echo "<td><button class='btn btn-danger' type= 'submit' name= 'select_student' value= '$row[0]' >" . "Select"  . "</button></td>";
     echo "</tr>";
   }
     ?>
   </tbody>
 </table>
-
+</form>
 <?php include "inc/footer.php"; ?>

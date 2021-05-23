@@ -8,6 +8,7 @@
 <?php include "inc/nav.php"; ?>
     <div class="container">
     <h3>Remove hidden meeting only</h3>
+    <form action="fsr_if_process.php" method="post">
     <table class="table">
         <thead>
             <tr>
@@ -32,11 +33,12 @@
                 echo  "<td> $row[1] </td>";
                 echo  "<td> $row[2] </td>";
                 echo  "<td> $row[3] </td>";
-                echo "<td><button class='btn btn-danger' type= 'submit' name= 'meeting_id' value= '$row[0]' >" . "Edit"  . "</button></td>";
+                echo "<td><button class='btn btn-danger' type= 'submit' name= 'delete_meeting' value= '$row[0]' >" . "Delete"  . "</button></td>";
             echo "</tr>";
         }
             ?>
         </tbody>
-    </table>   
+    </table>
+    </form>   
     </div>
 <?php include "inc/footer.php"; ?>
