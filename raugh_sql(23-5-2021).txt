@@ -1,0 +1,99 @@
+select add_meeting('Jatrabari','2021-05-01 12:01:02+01','2021-05-03 12:01:02+01','0');
+
+
+CREATE FUNCTION public.only_hidden_meeting_list()
+    RETURNS table(
+		meet_id integer,
+		place character varying(255),
+		s_time timestamp without time zone,
+		e_time timestamp without time zone
+	)
+    LANGUAGE 'plpgsql'
+    
+AS $BODY$
+BEGIN
+	RETURN QUERY
+	SELECT meeting_id,meeting_place,start_time,end_time FROM meetings
+	WHERE status = 'f';
+END;
+$BODY$;
+
+select * from only_hidden_meeting_list();
+select remove_meeting(15);
+select study_group_id from study_groups WHERE study_groups.meeting_id = 15
+
+
+CREATE OR REPLACE FUNCTION public.only_visible_meeting_list(
+	)
+    RETURNS TABLE(meet_id integer, place character varying, s_time timestamp without time zone, e_time timestamp without time zone) 
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+    ROWS 1000
+
+AS $BODY$
+BEGIN
+	RETURN QUERY
+	SELECT meeting_id,meeting_place,start_time,end_time FROM meetings
+	WHERE status = 't';
+END;
+$BODY$;
+
+select * from get_meeting_details(13)
+select * from only_visible_meeting_list()
+select add_study_group(10, 'ASE', 'Project', 2, 40);
+
+CREATE OR REPLACE FUNCTION public.add_study_group(
+	IN meet_id integer,
+	IN subject text,
+	IN details text,
+	IN member_limit int,
+	IN stud_id int
+	)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE
+	study_id integer;
+	is_exist int = (SELECT COUNT(*) FROM group_members WHERE group_members.student_id = stud_id);
+BEGIN
+	INSERT INTO study_groups VALUES(default, 13, subject, details, member_limit, now(),'1');
+	study_id = (SELECT study_group_id FROM study_groups ORDER BY study_group_id DESC LIMIT 1);
+	IF (is_exist = 0) THEN
+		INSERT INTO group_members VALUES(study_id, stud_id, now(), default);
+	ELSE
+		DELETE FROM group_members 
+		WHERE group_members.student_id = stud_id;
+		insert into group_members values(study_id, stud_id, now(), default);
+	END IF;
+END;
+$BODY$;
+
+INSERT INTO study_groups VALUES(default, 13, 'subject', 'details', 9, now(),'1');
+select * from get_all_study_groups()
+select join_study_group(33, 14)
+
+CREATE FUNCTION public.already_joined_group(IN stud_id integer)
+    RETURNS TABLE(
+		sg_id int,
+		subject character varying(255),
+		details character varying(1023)
+	)
+    LANGUAGE 'plpgsql'
+    
+AS $BODY$
+DECLARE
+	group_id int = (SELECT study_group_id from group_members where student_id = stud_id);
+BEGIN
+	RETURN QUERY
+	SELECT study_group_id, topic, description FROM study_groups WHERE study_group_id = group_id;
+END;
+$BODY$;
+
+select * from already_joined_group(45)
+select leave_member(45,12);
+
+
+
