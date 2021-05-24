@@ -85,6 +85,12 @@
                 $student_id = $_POST['inputStudent_id'];
                 echo "<input type='text' class='form-control' name='inputStudentId' value='$student_id' readonly>";
                 $results = pg_query($db, "select * from already_joined_group($student_id)");
+                $incoming_student_from_db= pg_query($db, "select group_owner($student_id)");
+                $owner = 0;
+                while ($row = pg_fetch_row($incoming_student_from_db)) {
+                    $owner = $row[0];
+                }
+                echo "Owner of this group are = $owner";
                 if (!$results) {
                     echo "An error occurred.\n";
                     exit;
@@ -96,7 +102,11 @@
                         echo  "<td> $row[1] </td>";
                         echo  "<td> $row[2] </td>";
                         echo "<td><button class='btn btn-danger' type= 'submit' name= 'Leave_group' value= '$row[0]' >" . "Leave"  . "</button></td>";
-                        echo "<td><button class='btn btn-secondary' type= 'submit' name= 'Update_group' value= '$row[0]' >" . "Update"  . "</button></td>";
+                        if( $student_id == $owner ){
+                            echo "<input type='hidden' name= 'owner' value = ". $owner . ">";
+                            echo "<td><button class='btn btn-secondary' formaction='edit_study_group.php' type= 'submit' name= 'group_id' value= '$row[0]' >" . "Edit"  . "</button></td>";
+                        }
+                        
                     echo "</tr>";
                 }
             }

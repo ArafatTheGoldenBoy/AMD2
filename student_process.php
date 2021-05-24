@@ -41,4 +41,19 @@ if(isset($_POST['Leave_group']))
         exit();
     }
 }
+
+if(isset($_POST['update_study_group']))
+{	 
+    $study_group_id = $_POST['group_id'];
+    $student_id = $_POST['owner'];
+    $place = $_POST['place'];
+    $details = $_POST['details'];
+    $limit = $_POST['limit'];
+    $sql = "select update_group($study_group_id, $student_id, '$place', '$details', $limit);";
+    $result = pg_query($db, $sql);
+    if ($result) {
+        header("Location: create_study_group.php");
+        exit();
+    }
+}
 ?>

@@ -1,0 +1,70 @@
+select group_owner(36)
+
+CREATE OR REPLACE FUNCTION public.group_owner(
+	stud_id integer)
+    RETURNS integer
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE
+	owner_id int;
+	group_id int;
+BEGIN
+	group_id := (SELECT study_group_id FROM group_members WHERE student_id = stud_id);
+	owner_id := (SELECT student_id FROM group_members WHERE study_group_id = group_id
+	ORDER BY joined_at ASC LIMIT 1);
+	RETURN owner_id;
+END;
+$BODY$;
+
+SELECT study_group_id FROM group_members WHERE student_id = 42
+	
+SELECT student_id FROM group_members WHERE study_group_id = 7
+	ORDER BY joined_at ASC LIMIT 1
+
+CREATE FUNCTION edit_group(IN group_id integer)
+    RETURNS table(
+		sg_id int, meet_id int, subject character varying(255), details character varying(1023),
+		student_limit smallint, created timestamp with time zone, isActive boolean
+	)
+    LANGUAGE 'plpgsql'
+    
+AS $BODY$
+BEGIN
+	RETURN QUERY
+	SELECT * FROM study_groups WHERE study_group_id = group_id;
+END;
+$BODY$;
+
+select * from edit_group(7);
+
+CREATE OR REPLACE FUNCTION update_group(IN group_id integer,IN incoming_id integer,IN subject text,IN details text,IN max_student integer)
+    RETURNS character varying
+    LANGUAGE 'plpgsql'
+    VOLATILE
+    PARALLEL UNSAFE
+    COST 100
+    
+AS $BODY$
+declare
+	group_owner int = (select group_members.student_id from group_members where group_members.study_group_id = group_id
+	ORDER BY joined_at ASC LIMIT 1);
+	message text;
+begin
+	if(group_owner = incoming_id) then
+		update study_groups
+		set topic = subject,
+			description = details,
+			group_member_limit = max_student
+		where study_group_id = group_id;
+		message = 'successfully updated';
+		
+	else
+		message = 'Permission denied';
+	end if;
+	return message;
+end;
+$BODY$;
+
+select update_group(10, 44, ase2, project, 2)
