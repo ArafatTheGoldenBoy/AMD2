@@ -148,24 +148,29 @@
         </thead>
         <tbody>
         <?php 
-        $results = pg_query($db, "select * from get_all_study_groups()");
-        if (!$results) {
-            echo "An error occurred.\n";
-            exit;
-        }
+            if(isset($_POST['select_meeting']))
+            {	 
+                $meeting_id = $_POST['select_meeting'];
+                $results = pg_query($db, "select * from get_all_study_groups($meeting_id)");
+                if (!$results) {
+                    echo "An error occurred.\n";
+                    exit;
+                }
+                
+                while ($row = pg_fetch_row($results)) {
+                    echo "<tr>";
+                        echo  "<td> $row[0] </td>";
+                        echo  "<td> $row[1] </td>";
+                        echo  "<td> $row[2] </td>";
+                        echo  "<td> $row[3] </td>";
+                        echo  "<td> $row[4] </td>";
+                        echo  "<td> $row[5] </td>";
+                        echo  "<td> $row[6] </td>";
+                        echo "<td><button class='btn btn-success' type= 'submit' name= 'Join_group' value= '$row[0]' >" . "Join"  . "</button></td>";
+                    echo "</tr>";
+                }
+            }
         
-        while ($row = pg_fetch_row($results)) {
-            echo "<tr>";
-                echo  "<td> $row[0] </td>";
-                echo  "<td> $row[1] </td>";
-                echo  "<td> $row[2] </td>";
-                echo  "<td> $row[3] </td>";
-                echo  "<td> $row[4] </td>";
-                echo  "<td> $row[5] </td>";
-                echo  "<td> $row[6] </td>";
-                echo "<td><button class='btn btn-success' type= 'submit' name= 'Join_group' value= '$row[0]' >" . "Join"  . "</button></td>";
-            echo "</tr>";
-        }
             ?>
         </tbody>
     </table> 

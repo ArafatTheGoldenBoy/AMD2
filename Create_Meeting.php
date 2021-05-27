@@ -6,7 +6,7 @@
     <title>Create_Meeting</title>
 </head>
 <body>
-<?php include "inc/nav.php"; ?>
+<?php include "inc/nav.php"; date_default_timezone_set("Europe/Berlin");?>
 <div class="container">
     <h1>Create Meeting</h1>
     <br>

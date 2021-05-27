@@ -6,6 +6,7 @@
     <title>Student</title>
 </head>
 <body>
+
 <?php include "inc/nav.php"; ?>
 <form action="select_meeting.php" method="post">
 <table class="table">
@@ -16,6 +17,7 @@
       <th scope="col">UserName</th>
       <th scope="col">Password</th>
       <th scope="col">Created time</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -34,6 +36,7 @@ if (!$show_student) {
         echo  "<td> $row[3] </td>";
         echo  "<td> $row[4] </td>";
         echo "<td><button class='btn btn-danger' type= 'submit' name= 'select_student' value= '$row[0]' >" . "Select"  . "</button></td>";
+        echo "<td><button class='btn btn-info' formaction='edit_student.php' type= 'submit' name= 'edit_student' value= '$row[0]' >" . "Edit"  . "</button></td>";
     echo "</tr>";
   }
     ?>

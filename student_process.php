@@ -56,4 +56,14 @@ if(isset($_POST['update_study_group']))
         exit();
     }
 }
+if(isset($_POST['update_change_name']))
+{	 
+    $student_id = $_POST['student_id'];
+    $student_name = $_POST['student_name'];
+    $result = pg_query($db, "select update_student($student_id,'$student_name')");
+    if ($result) {
+        header("Location: student.php");
+        exit();
+    }
+}
 ?>
