@@ -5,7 +5,7 @@ if(isset($_POST['add_meeting']))
     $place = $_POST['inputPlace'];
     $start_time = $_POST['inputStartTime'];
     $end_time = $_POST['inputEndTime'];
-    $sql = "select add_meeting('$place', '$start_time', '$end_time', '1')";
+    $sql = "select add_meeting('$place', '$start_time', '$end_time', '0')";
     $result = pg_query($db, $sql);
     if ($result) {
         while ($row = pg_fetch_row($result)) {
@@ -50,6 +50,22 @@ if(isset($_POST['visible']))
         header("Location: fsr_if.php");
         exit();
     }
+}
+
+if(isset($_POST['login']))
+{	 
+    $name = $_POST['username'];
+    $pass = $_POST['password'];
+    $sql = "select student_login('$name','$pass')";
+    $result = pg_query($db, $sql);
+    while($row = pg_fetch_row($result)){
+        $id = $row[0];
+    }
+    if ($id != null) {
+        header("Location: select_meeting.php");
+        exit();
+    }
+    else echo"abc";
 }
 ?>
 

@@ -25,7 +25,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="student.php">Student</a></li>
-            <li><a class="dropdown-item" href="select_meeting.php">Select Meeting</a></li>
+            <li><a class="dropdown-item" href="student_login.php">Select Meeting</a></li>
             <li><a class="dropdown-item" href="study_group.php">Study_Group</a></li>
             <li><a class="dropdown-item" href="edit_study_group.php">Edit Study Group</a></li>
           </ul>

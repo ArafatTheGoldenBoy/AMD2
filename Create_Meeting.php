@@ -34,7 +34,7 @@
         <br>
         <div class="form-group row">
             <div class="col-sm-10">
-            <button type="submit" name="add_meeting" class="btn btn-primary">Add</button>
+            <button type="submit" name="add_meeting" class="btn btn-primary">Create</button>
             </div>
         </div>
     </form>

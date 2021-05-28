@@ -16,7 +16,7 @@
                     $meeting_id = $_POST['edit_meeting'];
                     $sql = pg_query($db, "select * from edit_meeting($meeting_id);");
                     while($row = pg_fetch_row($sql)) {
-                            echo "<input type='text' name='meeting_id' value = ". $row[0] . " readonly>";
+                            echo "<p>Meeting ID <input type='text' name='meeting_id' value = ". $row[0] . " readonly></p>";
                             echo "<p>Location: <input type='text' name='inputPlace' value=" . $row[1] . "></p>";
                             $stime = date('Y-m-d\TH:i', strtotime($row[2]));
                             $etime = date('Y-m-d\TH:i', strtotime($row[3]));
