@@ -9,78 +9,76 @@
 
     <div class="container">
     <h3>Published Meetings</h3>
+    <!-- card layout -->
     <form action="details_meeting.php" method="post">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Meeting ID</th>
-                <th scope="col">Place</th>
-                <th scope="col">Start Time</th>
-                <th scope="col">End Time</th>
-                <th scope="col">Details</th>
-                <th scope="col">Modify</th>
-
-            </tr>
-        </thead>
-        <tbody>
-        <?php 
-        $result = pg_query($db, "select * from get_meeting_overview();");
-        if (!$result) {
+    <?php 
+        $results = pg_query($db, "select * from get_meeting_overview();");
+        if (!$results) {
             echo "An error occurred.\n";
             exit;
         }
-        
-        while ($row = pg_fetch_row($result)) {
-            echo "<tr>";
-                echo  "<td> $row[0] </td>";
-                echo  "<td> $row[1] </td>";
-                echo  "<td> $row[2] </td>";
-                echo  "<td> $row[3] </td>";
-                echo "<td><button class='btn btn-info' type= 'submit' name= 'details_meeting' value= '$row[0]' >" . "Details"  . "</button></td>";
-                echo "<td><button class='btn btn-success' formaction='edit_meeting.php' type= 'submit' name= 'edit_meeting' value= '$row[0]' >" . "Modify"  . "</button></td>";
-            echo "</tr>";
+        echo '<div class="row row-cols-1 row-cols-md-3 g-4">';
+        while ($row = pg_fetch_row($results)) {
+            echo "<div class='col'>";
+                echo '<div class="card h-100">';
+                    echo "<div class='card-header'>$row[1]</div>";
+                    echo '<div class="card-body">';
+                        //echo "<h5 class='card-title bg-light'>  </h5>";
+                        echo "<p class='card-text'>Meeting Id:  $row[0] </p>";
+                        echo "<p class='card-text'>Start Time:  $row[2] </p>";
+                        echo "<p class='card-text'>End Time: $row[3] </p>";
+                        echo "<div class='row'>";
+                            echo '<div class="col-3">';
+                                echo "<button class='btn btn-info' type= 'submit' name= 'details_meeting' value= '$row[0]' >" . "Details"  . "</button>";
+                            echo '</div>';
+                            echo '<div class="col">';
+                                echo "<button class='btn btn-success' formaction='edit_meeting.php' type= 'submit' name= 'edit_meeting' value= '$row[0]' >" . "Modify"  . "</button>";
+                            echo '</div>';
+                        echo "</div>";
+                    echo '</div>';
+                echo '</div>';
+            echo '</div>';
         }
-            ?>
-        </tbody>
-    </table>
-    </form>   
+        echo '</div>';
+    ?>
+    </form>  
+    <!-- end card layout -->
     </div>
-
     <div class="container">
     <h3>Hidden Meetings</h3>
+    <!-- card layout -->
     <form action="fsr_if_process.php" method="post">
-    <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">Meeting ID</th>
-                <th scope="col">Place</th>
-                <th scope="col">Start Time</th>
-                <th scope="col">End Time</th>
-                <th scope="col">Delete</th>
-                <th scope="col">Publish</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php 
-        $result = pg_query($db, "select * from only_hidden_meeting_list();");
-        if (!$result) {
+    <?php 
+        $results = pg_query($db, "select * from only_hidden_meeting_list();");
+        if (!$results) {
             echo "An error occurred.\n";
             exit;
         }
-        
-        while ($row = pg_fetch_row($result)) {
-            echo "<tr>";
-                echo  "<td> $row[0] </td>";
-                echo  "<td> $row[1] </td>";
-                echo  "<td> $row[2] </td>";
-                echo  "<td> $row[3] </td>";
-                echo "<td><button class='btn btn-danger' type= 'submit' name= 'delete_meeting' value= '$row[0]' >" . "Delete"  . "</button></td>";
-                echo "<td><button class='btn btn-success' type= 'submit' name= 'visible' value= '$row[0]' >" . "Publish"  . "</button></td>";
-                echo "</tr>";
+        echo '<div class="row row-cols-1 row-cols-md-3 g-4">';
+        while ($row = pg_fetch_row($results)) {
+            echo "<div class='col'>";
+                echo '<div class="card h-100">';
+                    echo "<div class='card-header'>$row[1]</div>";
+                    echo '<div class="card-body">';
+                        //echo "<h5 class='card-title bg-light'>  </h5>";
+                        echo "<p class='card-text'>Meeting Id:  $row[0] </p>";
+                        echo "<p class='card-text'>Start Time:  $row[2] </p>";
+                        echo "<p class='card-text'>End Time: $row[3] </p>";
+                        echo "<div class='row'>";
+                            echo '<div class="col-3">';
+                                echo "<button class='btn btn-danger' type= 'submit' name= 'delete_meeting' value= '$row[0]' >" . "Delete"  . "</button>";
+                            echo '</div>';
+                            echo '<div class="col">';
+                                echo "<button class='btn btn-success' type= 'submit' name= 'visible' value= '$row[0]' >" . "Publish"  . "</button>";
+                            echo '</div>';
+                        echo "</div>";
+                    echo '</div>';
+                echo '</div>';
+            echo '</div>';
         }
-            ?>
-        </tbody>
-    </table>
-    </form>   
+        echo '</div>';
+    ?>
+    </form>  
+    <!-- end card layout -->
     </div>
 <?php include "inc/footer.php"; ?>

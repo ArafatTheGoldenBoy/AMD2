@@ -62,6 +62,7 @@ if(isset($_POST['login']))
         $id = $row[0];
     }
     if ($id != null) {
+        $_SESSION['student_id'] = $id;
         header("Location: select_meeting.php");
         exit();
     }
