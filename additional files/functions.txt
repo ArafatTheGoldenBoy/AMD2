@@ -1,0 +1,29 @@
+CREATE OR REPLACE FUNCTION public.student_login(
+	sname character varying,
+	spass character varying)
+    RETURNS integer
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE 
+	s_id integer;
+BEGIN
+	s_id := (SELECT student_id FROM students where student_username = sname AND password = spass);
+	return s_id;
+END;
+$BODY$;
+
+
+
+
+
+if(no_of_student >= gp_limit) then
+		UPDATE study_groups
+		SET  status = '0'
+		where study_groups.study_group_id = group_id;
+	else 
+		UPDATE study_groups
+		SET  status = '1'
+		where study_groups.study_group_id = group_id;
+	end if;
