@@ -2,7 +2,10 @@
     background-color: #7952b3
 }
 body{
-    font-family: "cursive", Arial, Tahoma, Serif;
+    font-family: Arial, Tahoma, Serif;
+}
+nav{
+    font-family: sans-serif;
 }
 .c_text{
     font-size: medium;

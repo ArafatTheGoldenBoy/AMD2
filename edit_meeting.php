@@ -24,12 +24,6 @@
                             echo "<p>End Time: <input type='datetime-local' name='inputEnd' value=" . $etime . "></p>";
                             echo "Status: <input type='radio' name='in_status' value='t' checked = 'true'>Show ";
                             echo "<input type='radio' name='in_status' value='f'>Hide</p>";
-                            // echo "<p>Region Province: <input type='text' name='in_region' value=" . $row[2] . "></p><br>";
-                            // echo "<p>Price: <input type='text' name='in_price' value=" . $row[3]. "></p><br>";
-                            // echo "<p>Quantity: <input type='text' name='in_stock' value=" . $row[4] . "></p><br>";
-                            // echo "Status: <input type='radio' name='in_status' value='t'>Show ";
-                            // echo "<input type='radio' name='in_status' value='f'>Hide</p>";
-                            // echo "<input type='hidden' name='su_id' value=" . $row[6] . ">";
                     }
                 }
             ?>

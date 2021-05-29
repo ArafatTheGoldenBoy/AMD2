@@ -8,34 +8,42 @@
 <body>
 <?php include "inc/nav.php"; date_default_timezone_set("Europe/Berlin");?>
 <div class="container">
-    <h1>Create Meeting</h1>
+    <h3 class="shadow-sm bg-light my-4">Create Meeting</h3>
     <br>
     <form action="fsr_if_process.php" method="post">
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Location</label>
-            <div class="col-sm-3">
-            <input type="text" class="form-control" name="inputPlace" placeholder="Meeting Place">
+        <div class="row">
+            <div class="col-4 shadow p-4">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Location</label>
+                    <div class="col">
+                    <input type="text" class="form-control" name="inputPlace" placeholder="Meeting Place">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Starting Time</label>
+                    <div class="col">
+                    <input type="datetime-local" class="form-control" name="inputStartTime">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Ending Time</label>
+                    <div class="col">
+                    <input type="datetime-local" class="form-control" name="inputEndTime">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="d-grid gap-2">
+                    <button type="submit" name="add_meeting" class="btn btn-success">Create</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <br>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Start Time With Date</label>
-            <div class="col-sm-3">
-            <input type="datetime-local" class="form-control" name="inputStartTime">
+            <div class="col">
+                
             </div>
-        </div>
-        <br>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">End Time With Date</label>
-            <div class="col-sm-3">
-            <input type="datetime-local" class="form-control" name="inputEndTime">
-            </div>
-        </div>
-        <br>
-        <div class="form-group row">
-            <div class="col-sm-10">
-            <button type="submit" name="add_meeting" class="btn btn-primary">Create</button>
-            </div>
+            
         </div>
     </form>
 </div>

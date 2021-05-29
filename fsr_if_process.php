@@ -52,18 +52,18 @@ if(isset($_POST['visible']))
     }
 }
 
-if(isset($_POST['login']))
+if(isset($_POST['login_fsr']))
 {	 
-    $name = $_POST['username'];
+    $name = $_POST['fsr_username'];
     $pass = $_POST['password'];
-    $sql = "select student_login('$name','$pass')";
+    $sql = "select fsr_login('$name','$pass')";
     $result = pg_query($db, $sql);
     while($row = pg_fetch_row($result)){
         $id = $row[0];
     }
     if ($id != null) {
-        $_SESSION['student_id'] = $id;
-        header("Location: select_meeting.php");
+        $_SESSION["fsr_if_id"] = $id;
+        header("Location: fsr_if.php");
         exit();
     }
     else echo"abc";
