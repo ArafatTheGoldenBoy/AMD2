@@ -35,7 +35,7 @@ if (!$show_student) {
         echo  "<td> $row[2] </td>";
         echo  "<td> $row[3] </td>";
         echo  "<td> $row[4] </td>";
-        echo "<td><button class='btn btn-danger' type= 'submit' name= 'select_student' value= '$row[0]' >" . "Select"  . "</button></td>";
+        echo "<td><button class='btn btn-danger' type= 'submit' name= 'login' value= '$row[0]' >" . "Select"  . "</button></td>";
         echo "<td><button class='btn btn-info' formaction='edit_student.php' type= 'submit' name= 'edit_student' value= '$row[0]' >" . "Edit"  . "</button></td>";
     echo "</tr>";
   }

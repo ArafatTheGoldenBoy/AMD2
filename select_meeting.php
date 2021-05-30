@@ -12,6 +12,8 @@
     <form action="study_group.php" method="post">
     <?php 
     if(isset($_POST['login'])){
+        // $stud_id = $_POST['login'];
+        // echo $stud_id;
         $results = pg_query($db, "select * from only_visible_meeting_list()");
         // if(isset($_POST['select_student']))
         //     {	 
@@ -25,7 +27,12 @@
         while($row = pg_fetch_row($result)){
                 $student_id = $row[0];
             }
-            echo "<input type='hidden' class='form-control' name='inputStudent_id' value='$student_id' readonly>";
+            session_start();
+            $_SESSION["student_id"] = $student_id ;
+            $sid = $_SESSION["student_id"];
+            echo $sid;
+
+            echo "<input type='hidden' class='form-control' name='inputStudent_id' value='$sid' readonly>";
             if ($student_id != null) {
                 if (!$results) {
                      echo "An error occurred.\n";
@@ -48,7 +55,16 @@
                     }
                 echo '</div>';
             }
-            else echo"abc";
+            else {
+                echo '<div class="alert alert-warning d-flex align-items-center" role="alert">';
+                echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
+                echo '<div>';
+                    echo 'An example warning alert with an icon';
+                echo '</div>';
+                echo '</div>';
+            }
+            
+
     }
     ?>
     </form>  

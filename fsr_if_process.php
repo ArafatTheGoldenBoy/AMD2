@@ -1,5 +1,7 @@
 <?php
 include_once 'inc/conn.php';
+include_once 'inc/header.php';
+include_once 'inc/nav.php';
 if(isset($_POST['add_meeting']))
 {	 
     $place = $_POST['inputPlace'];
@@ -66,7 +68,17 @@ if(isset($_POST['login_fsr']))
         header("Location: fsr_if.php");
         exit();
     }
-    else echo"abc";
+    else {
+        echo '<div class="container">';
+        echo '<div class="alert alert-warning d-flex align-items-center" role="alert">';
+        echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
+        echo '<div>';
+            echo 'An example warning alert with an icon';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        
+    }
 }
 ?>
 
