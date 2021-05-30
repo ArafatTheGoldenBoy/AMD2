@@ -25,7 +25,7 @@
                                     echo '</div>';
                                 echo '</div>';
                                 echo "<div class='form-floating mb-3'>";
-                                    echo "<input type='text' class='form-control' name='inputPlace' placeholder='Location: ' value=" . $row[1] . ">";
+                                    echo '<input type="text" class="form-control" name="inputPlace" placeholder="Location: " value="'.$row[1].'">';
                                     echo "<label>Location: </label>";
                                 echo '</div>';
                                 // echo "<p>Location: <input type='text' name='inputPlace' value=" . $row[1] . "></p>";

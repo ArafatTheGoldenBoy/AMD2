@@ -69,15 +69,12 @@ if(isset($_POST['login_fsr']))
         exit();
     }
     else {
-        echo '<div class="container">';
-        echo '<div class="alert alert-warning d-flex align-items-center" role="alert">';
-        echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
-        echo '<div>';
-            echo 'An example warning alert with an icon';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        
+        //header("Location: fsr_login.php");
+        echo "<script language='javascript'>";
+        echo "if(!alert('Wrong User Name or Password')){
+            location.replace('fsr_login.php')
+        }";
+        echo "</script>";
     }
 }
 ?>

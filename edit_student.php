@@ -21,7 +21,7 @@
                                 echo "<input type='hidden' name= 'student_id' value = ". $row[0] . ">";
                                 // echo "<p>Student Name: <input type='text' name='student_name' value=" . $row[1] . "></p>";
                                 echo "<div class='form-floating mb-3'>";
-                                echo "<input type='text' class='form-control' name='student_name' placeholder='Student Name:' value=" . $row[1] . ">";
+                                echo "<input type='text' class='form-control' name='student_name' placeholder='Student Name:' value='" . $row[1] . "'>";
                                     echo "<label>Student Name: </label>";
                                 echo '</div>';
                         }

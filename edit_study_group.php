@@ -23,15 +23,15 @@
                                 echo "<input type='hidden' name= 'group_id' value = ". $row[0] . ">";
 
                                 echo "<div class='form-floating mb-3'>";
-                                    echo "<input type='text' class='form-control' id='floatingInput' name='place' placeholder='Group Topic' value=" . $row[2] . "><br>";
+                                    echo "<input type='text' class='form-control' id='floatingInput' name='place' placeholder='Group Topic' value='" . $row[2] . "'><br>";
                                     echo "<label for='floatingInput'>Group Topic</label>";
                                 echo '</div>';
                                 echo "<div class='form-floating mb-3'>";
-                                    echo "<textarea class='form-control' id='floatingInput' name='details' style='height: 100px' placeholder='Description' value=" . $row[3] . ">$row[3]</textarea><br>";
+                                    echo "<textarea class='form-control' id='floatingInput' name='details' style='height: 100px' placeholder='Description' value='" . $row[3] . "'>$row[3]</textarea><br>";
                                     echo "<label>Description</label>";
                                 echo '</div>';
                                 echo "<div class='form-floating mb-3'>";
-                                    echo "<input type='text' class='form-control' id='floatingInput' name='limit' placeholder='Set Student Limit' value=" . $row[4] . "><br>";
+                                    echo "<input type='text' class='form-control' id='floatingInput' name='limit' placeholder='Set Student Limit' value='" . $row[4] . "'><br>";
                                     echo "<label for='floatingInput'>Set Student Limit</label>";
                                 echo '</div>';
                                 

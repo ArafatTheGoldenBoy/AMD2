@@ -50,7 +50,7 @@ if(isset($_POST['update_study_group']))
     $result = pg_query($db, $sql);
     if ($result) {
         
-        echo '<script>history.go(-2);</script>';
+        echo "<script>history.go(-2);</script>";
         
     }
 }

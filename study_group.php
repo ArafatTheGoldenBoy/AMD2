@@ -232,5 +232,19 @@
         function myFunction() {
         window.location = "create_study_group.php";
         }
-    </script>
+(function()
+{
+  if( window.localStorage )
+  {
+    if( !localStorage.getItem('firstLoad') )
+    {
+      localStorage['firstLoad'] = true;
+      window.location.reload();
+    }  
+    else
+      localStorage.removeItem('firstLoad');
+  }
+})();
+</script>
+    <!-- <script>  setTimeout(function(){ location.reload(); }, 2000); </script> -->
 <?php include "inc/footer.php"; ?>
