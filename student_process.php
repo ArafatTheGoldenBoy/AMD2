@@ -11,8 +11,7 @@ if(isset($_POST['add_study_group']))
     $sql = "select add_study_group($meeting_id, '$topic', '$details', $student_limit, $student_id);";
     $result = pg_query($db, $sql);
     if ($result) {
-        header("Location: study_group.php");
-        exit();
+        echo '<script>history.go(-2);</script>';
     }
 }
 if(isset($_POST['Join_group']))
@@ -24,8 +23,7 @@ if(isset($_POST['Join_group']))
     $sql = "select join_study_group($student_id, $study_group_id);";
     $result = pg_query($db, $sql);
     if ($result) {
-        header("Location: study_group.php");
-        exit();
+        echo '<script>history.go(-2);</script>';
     }
 }
 if(isset($_POST['Leave_group']))
@@ -37,8 +35,7 @@ if(isset($_POST['Leave_group']))
     $sql = "select leave_member($student_id, $study_group_id);";
     $result = pg_query($db, $sql);
     if ($result) {
-        header("Location: study_group.php");
-        exit();
+        echo '<script>history.go(-2);</script>';
     }
 }
 
@@ -54,7 +51,6 @@ if(isset($_POST['update_study_group']))
     if ($result) {
         
         echo '<script>history.go(-2);</script>';
-        echo '<script>window.location.assign();</script>';
         
     }
 }
@@ -64,8 +60,7 @@ if(isset($_POST['update_change_name']))
     $student_name = $_POST['student_name'];
     $result = pg_query($db, "select update_student($student_id,'$student_name')");
     if ($result) {
-        header("Location: study_group.php");
-        exit();
+        echo '<script>history.go(-2);</script>';
     }
 }
 ?>
