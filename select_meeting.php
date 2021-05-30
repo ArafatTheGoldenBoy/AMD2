@@ -30,7 +30,7 @@
             session_start();
             $_SESSION["student_id"] = $student_id ;
             $sid = $_SESSION["student_id"];
-            echo $sid;
+            //echo $sid;
 
             echo "<input type='hidden' class='form-control' name='inputStudent_id' value='$sid' readonly>";
             if ($student_id != null) {

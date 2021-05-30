@@ -8,7 +8,7 @@
 <?php include "inc/nav.php"; ?>
     <div class="container">
     <h3 class="shadow-sm bg-light my-4">Meeting overview along with study group and student information</h3>
-    <table class="table">
+    <table class="table table-hover shadow">
         <thead>
             <tr>
                 <th scope="col">Study group id</th>

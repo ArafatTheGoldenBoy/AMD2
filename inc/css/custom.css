@@ -1,12 +1,12 @@
-.nav-background{
-    background-color: #7952b3
-}
 body{
     font-family: Arial, Tahoma, Serif;
 }
-nav{
-    font-family: sans-serif;
-}
-.c_text{
-    font-size: medium;
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
 }

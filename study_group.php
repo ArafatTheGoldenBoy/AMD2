@@ -158,7 +158,7 @@
                         echo '<div class="alert alert-success d-flex align-items-center" role="alert">';
                         echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>';
                             echo '<div>';
-                                echo 'You are the owner';
+                                echo 'You are the owner of this group';
                             echo '</div>';
                         echo '</div>';
                     }
@@ -167,7 +167,7 @@
                         echo '<div class="alert alert-warning d-flex align-items-center" role="alert">';
                         echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
                             echo '<div>';
-                            echo 'You are not the group owner';
+                            echo 'You are not the owner of this group ';
                             echo '</div>';
                         echo '</div>';
                     }
