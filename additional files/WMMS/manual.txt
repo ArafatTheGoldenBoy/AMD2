@@ -1,0 +1,18 @@
+Prerequisites:
+The following environment is required in order to run the project:
+- Xampp (version 3.2.4 or higher)
+- pgAdmin 4 (v.5)
+- PostgreSQL with PL/pgSQL installed ( recommended: 9.5 or higher )
+- Any updated web browser. ( Recommended: Firefox or Chrome )
+
+How to Run:
+- Setup the environment properly.
+- Move the folder named ‘WMMS’ to the ‘htdocs’ folder. ( C:\xampp\htdocs )
+- Run the xampp, strat Apache server.
+- Run pgAdmin 4 v5 from the start menu. Open the server.
+- Right click on the database named ‘WMMS’ and click restore.
+- Browse ‘postgres.sql’ file from the project folder and load it to the database.
+- Go to new tab of the browser
+- Write http://localhost/WMMS/index.php in the address bar.
+- To enter into the FSR:IF menu, Username : 'admin' Password: 'admin'
+- To enter into the Student menu, Username : 'raw' Password: '123456'
