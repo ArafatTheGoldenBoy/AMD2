@@ -1,9 +1,9 @@
 
 <?php 
-  include_once "inc/conn.php";
+  include "inc/conn.php";
   include "inc/header.php";
 ?>
-    <title>Create_Meeting</title>
+    <title>Index</title>
 </head>
 <body>
 <?php include "inc/nav.php"; date_default_timezone_set("Europe/Berlin");?>

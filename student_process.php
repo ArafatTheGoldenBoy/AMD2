@@ -8,7 +8,13 @@ if(isset($_POST['add_study_group']))
     $topic = $_POST['inputTopic'];
     $details = $_POST['inputDescription'];
     $student_limit = $_POST['inputStudentLimit'];
-    $sql = "select add_study_group($meeting_id, '$topic', '$details', $student_limit, $student_id);";
+	if($student_limit == null){
+		$sql = "select add_study_group($meeting_id, '$topic', '$details', $student_id);";
+	}
+	else{
+		$sql = "select add_study_group($meeting_id, '$topic', '$details', $student_id, $student_limit);";
+	}
+    
     $result = pg_query($db, $sql);
     if ($result) {
         echo '<script>history.go(-2);</script>';
@@ -46,7 +52,13 @@ if(isset($_POST['update_study_group']))
     $place = $_POST['place'];
     $details = $_POST['details'];
     $limit = $_POST['limit'];
-    $sql = "select update_group($study_group_id, $student_id, '$place', '$details', $limit);";
+	if($limit == null){
+		$sql = "select update_group($study_group_id, $student_id, '$place', '$details');";
+	}
+	else{
+		$sql = "select update_group($study_group_id, $student_id, '$place', '$details', $limit);";
+	}
+    
     $result = pg_query($db, $sql);
     if ($result) {
         

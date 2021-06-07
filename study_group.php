@@ -83,7 +83,7 @@
                                 <div class="form-group row">
                                     <label class="col-4 col-form-label">Member Limit</label>
                                     <div class="col">
-                                    <input type="text" class="form-control" name="inputStudentLimit" required>
+                                    <input type="text" class="form-control" name="inputStudentLimit">
                                     </div>
                                 </div>
                                 <br>
