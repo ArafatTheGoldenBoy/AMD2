@@ -90,6 +90,43 @@
     </form>  
     <!-- end card layout -->
     </div>
+    <div class="container">
+    <h3 class="shadow-sm bg-light my-4">Past Meetings</h3>
+    <!-- card layout -->
+    <form action="fsr_if_process.php" method="post">
+    <?php 
+        $results = pg_query($db, "select * from past_meeting_list();");
+        if (!$results) {
+            echo "An error occurred.\n";
+            exit;
+        }
+        echo '<div class="row row-cols-1 row-cols-md-3 g-4">';
+        while ($row = pg_fetch_row($results)) {
+            echo "<div class='col'>";
+                echo '<div class="card h-100 shadow">';
+                    echo "<div class='card-header'>$row[1]</div>";
+                    echo '<div class="card-body">';
+                        //echo "<h5 class='card-title bg-light'>  </h5>";
+                        echo "<p class='card-text'>Meeting Id:  $row[0] </p>";
+                        echo "<p class='card-text'>Start Time:  $row[2] </p>";
+                        echo "<p class='card-text'>End Time: $row[3] </p>";
+                        echo "<div class='row'>";
+                            echo '<div class="col-3">';
+                                echo "<button class='btn btn-info' formaction='details_meeting.php' type= 'submit' name= 'details_meeting' value= '$row[0]' >" . "Details"  . "</button>";
+                            echo '</div>';
+                            echo '<div class="col-3">';
+                                echo "<button class='btn btn-danger' type= 'submit' name= 'delete_meeting' value= '$row[0]' >" . "Delete"  . "</button>";
+                            echo '</div>';
+                        echo "</div>";
+                    echo '</div>';
+                echo '</div>';
+            echo '</div>';
+        }
+        echo '</div>';
+    ?>
+    </form>  
+    <!-- end card layout -->
+    </div>
     <script type="text/javascript">
         function myFunction() {
         window.location = "Create_Meeting.php";
