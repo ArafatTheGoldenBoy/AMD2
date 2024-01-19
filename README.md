@@ -40,14 +40,21 @@ http://localhost:8888/WMMS
 
 ## Distributed database with this project
 This WMMS is not a big project or database to be used as a distributed database. But a bigger picture can also be seen where group of university’s working together to create a platform for students. A platform where students from different universities can come online and share their knowledge together. For a project something like that, a bigger and spread network is required where different universities will have their own shared databases to create a combination of distributed database system.
+
 Distribution of a database can be done in some ways like,
+
 Data fragmentation:
+
 It is the process of dividing a table into smaller tables. This fragmentation has to be done in a way that from the fragments, the original table can be reconstructed. The fragmentation technique,
+
 •	Increases efficiency because irrelevant data is not available in all sites.
 •	Increases efficiency because data is stored close to the site of usage.
 •	Local query optimization technique is also becomes efficient.
+
 Data Replication:
+
 It is the process of storing copies of database in different sites. If we store the database of our system in different sites,
+
 •	Even if one site is down, the system will not collapse since there is another copy is existed in another site which increases reliability.
 •	Query processing can be done with less bandwidth usage because of local database.
 •	Local database ensures quicker response which increases speed.
