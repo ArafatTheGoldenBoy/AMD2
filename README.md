@@ -30,13 +30,24 @@ Table-1: UI – Functional requirements
 ## Project operations
 This project is mainly consisting of two user interfaces. One for the admin FSR:IF and the other is for student. All the major operation is conducted by linking and fetching data from the database using PL/pgSQL. The FSR:IF admin can create, edit, delete meeting. Also they can see all the activities happening in the system. The students can find, select meetings to create study groups. They can also join other study groups or modify the group activities and so forth.
 
-## Prerequisites
-The zip file needs to extract at the server’s htdocs directory (for local server) or public_html directory (for remote server).
+## Prerequisites:
+The following environment is required in order to run the project:
+- Xampp (version 3.2.4 or higher)
+- pgAdmin 4 (v.5)
+- PostgreSQL with PL/pgSQL installed ( recommended: 9.5 or higher )
+- Any updated web browser. ( Recommended: Firefox or Chrome )
 
-
-## How to Run
-After starting the server (XAMPP/MAMP), we just need to hit the URL (directory of our app at the server) at the browser. In our environment the URL was like:
-http://localhost:8888/WMMS	
+## How to Run:
+- Setup the environment properly.
+- Move the folder named ‘WMMS’ to the ‘htdocs’ folder. ( C:\xampp\htdocs )
+- Run the xampp, strat Apache server.
+- Run pgAdmin 4 v5 from the start menu. Open the server.
+- Right click on the database named ‘WMMS’ and click restore.
+- Browse ‘postgres.sql’ file from the project folder and load it to the database.
+- Go to new tab of the browser
+- Write http://localhost/WMMS/index.php in the address bar.
+- To enter into the FSR:IF menu, Username : 'admin' Password: 'admin'
+- To enter into the Student menu, Username : 'raw' Password: '123456'
 
 ## Distributed database with this project
 This WMMS is not a big project or database to be used as a distributed database. But a bigger picture can also be seen where group of university’s working together to create a platform for students. A platform where students from different universities can come online and share their knowledge together. For a project something like that, a bigger and spread network is required where different universities will have their own shared databases to create a combination of distributed database system.
