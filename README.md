@@ -43,21 +43,17 @@ This WMMS is not a big project or database to be used as a distributed database.
 
 Distribution of a database can be done in some ways like,
 
-Data fragmentation:
-
+### Data fragmentation:
 It is the process of dividing a table into smaller tables. This fragmentation has to be done in a way that from the fragments, the original table can be reconstructed. The fragmentation technique,
+-	Increases efficiency because irrelevant data is not available in all sites.
+*	Increases efficiency because data is stored close to the site of usage.
++	Local query optimization technique is also becomes efficient.
 
-•	Increases efficiency because irrelevant data is not available in all sites.
-•	Increases efficiency because data is stored close to the site of usage.
-•	Local query optimization technique is also becomes efficient.
-
-Data Replication:
-
+### Data Replication:
 It is the process of storing copies of database in different sites. If we store the database of our system in different sites,
-
-•	Even if one site is down, the system will not collapse since there is another copy is existed in another site which increases reliability.
-•	Query processing can be done with less bandwidth usage because of local database.
-•	Local database ensures quicker response which increases speed.
+-	Even if one site is down, the system will not collapse since there is another copy is existed in another site which increases reliability.
+*	Query processing can be done with less bandwidth usage because of local database.
++	Local database ensures quicker response which increases speed.
 
 ## Conclusion
 This project “Work-Together Meeting Management System” is a PostgreSQL based project where most of the functional logic was implemented inside a database. Working on this project was entirely a new experience for both of us. Implementing logics directly on the database and fetching them to cast on the interface was a bit challenging at start. But day by day, we learned and things got easier. Under the situations of COVID-19 pandemic, this project was cordially created to help the great cause to support the FSR:IF team to create an online environment for already a great initiative of arranging meetings for students.
